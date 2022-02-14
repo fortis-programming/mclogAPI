@@ -22,6 +22,12 @@ namespace mclog_API.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetUsers()
+        {
+            return await _context.activityLogs.ToListAsync(); ;
+        }
+
         // GET: api/ActivityLogs
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetLogs(string id)
@@ -87,13 +93,13 @@ namespace mclog_API.Controllers
 
         // POST: api/ActivityLogs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<ActivityLogs>> PostActivityLogs(ActivityLogs activityLogs)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<ActivityLogs>> PostActivityLogs(int id, ActivityLogs activityLogs)
         {
             _context.activityLogs.Add(activityLogs);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetActivityLogs", new { id = activityLogs.Id }, activityLogs);
+            return CreatedAtAction("GetActivityLogs", new { id = activityLogs }, activityLogs);
         }
 
         // DELETE: api/ActivityLogs/5
