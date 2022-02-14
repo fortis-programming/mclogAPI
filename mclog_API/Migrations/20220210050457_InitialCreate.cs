@@ -35,6 +35,7 @@ namespace mclog_API.Migrations
                     TimeIn = table.Column<DateTime>(type: "datetime", nullable: false),
                     TImeOut = table.Column<DateTime>(type: "datetime", nullable: false),
                     BuildingName = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(255)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(255)", nullable: false)
                 },
                 constraints: table =>

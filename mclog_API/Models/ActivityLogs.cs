@@ -9,9 +9,12 @@ namespace mclog_API.Models
         public DateTime TimeIn { get; set; }
 
         public DateTime TimeOut { get; set; }
-       
-        public string BuildingName { get; set; } = string.Empty;
+
+        public string? BuildingName { get; set; }
         
-        public string UserId { get; set; }
+        public string? Status { get; set; } 
+
+        public string? UserId { get; set; }
+
     }
 }
