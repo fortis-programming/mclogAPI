@@ -28,7 +28,7 @@ namespace mclog_API.Controllers
             return await _context.activityLogs.ToListAsync(); ;
         }
 
-        // GET: api/ActivityLogs
+        // GET: api/ActivityLogs/1
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetLogs(string id)
         {
