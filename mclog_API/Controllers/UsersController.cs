@@ -23,11 +23,11 @@ namespace mclog_API.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync(); ; 
-        }
+        }*/
 
         // GET: api/Users/5
         [HttpGet("{id}")]

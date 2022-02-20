@@ -9,5 +9,7 @@ namespace mclog_API.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<ActivityLogs> activityLogs { get; set; }
+
+        public DbSet<UserHealthStatus> userHealthStatus { get; set; }
     }
 }

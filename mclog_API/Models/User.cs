@@ -6,18 +6,29 @@ namespace mclog_API.Models
     { 
         public int Id { get; set; }
 
-        [StringLength(20)]
-        public string Name { get; set; } = string.Empty;
-
         [StringLength(200)]
-        public string Gender { get; set; } = string.Empty;
+        public string? FirstName { get; set; }
 
-        public string Address { get; set; } = string.Empty;
+        public string? LastName { get; set; }
 
-        public string Email { get; set; } = string.Empty;
+        public string? MiddleName { get; set; }
 
-        public string PhoneNumber { get; set; } = string.Empty;
+        public int BirthDate { get; set; }
 
-        public string Password { get; set; } = string.Empty;
+        public string? Province { get; set; }
+
+        public string? Region { get; set; } 
+
+        public string? City { get; set; }   
+
+        public string? Baranggay { get; set; } 
+
+
+        public string? Gender { get; set; }
+
+
+        public string? PhoneNumber { get; set; }
+
+        public string? Password { get; set; }
     }
 }
