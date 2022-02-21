@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mclog_API.Data;
 using mclog_API.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace mclog_API.Controllers
 {
