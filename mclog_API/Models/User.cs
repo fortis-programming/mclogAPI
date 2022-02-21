@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace mclog_API.Models
+﻿namespace mclog_API.Models
 {
     public class User
     { 
         public int Id { get; set; }
 
-        [StringLength(200)]
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -23,9 +20,7 @@ namespace mclog_API.Models
 
         public string? Baranggay { get; set; } 
 
-
         public string? Gender { get; set; }
-
 
         public string? PhoneNumber { get; set; }
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace mclog_API.Models
+﻿namespace mclog_API.Models
 {
     public class UserHealthStatus
     {

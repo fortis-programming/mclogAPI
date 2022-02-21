@@ -22,6 +22,7 @@ namespace mclog_API.Controllers
             _context = context;
         }
 
+        // WILL REMOVE THIS ONE AFTER DEVELOPMENT
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetUsers()
         {
