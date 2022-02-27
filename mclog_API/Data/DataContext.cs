@@ -11,5 +11,7 @@ namespace mclog_API.Data
         public DbSet<ActivityLogs> activityLogs { get; set; }
 
         public DbSet<UserHealthStatus> userHealthStatus { get; set; }
+
+        public DbSet<AuthenticationModel> authenticationModel { get; set; }
     }
 }
