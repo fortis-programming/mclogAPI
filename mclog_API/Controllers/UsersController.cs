@@ -30,7 +30,6 @@ namespace mclog_API.Controllers
         {
             return await _context.Users.ToListAsync(); ; 
         }*/
-
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -101,6 +100,11 @@ namespace mclog_API.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        private bool CheckIfMobileIsRegistered(string MobileNumber)
+        {
+            return _context.Users.Any(e => e.PhoneNumber == MobileNumber);
         }
 
         private bool UserExists(int id)
