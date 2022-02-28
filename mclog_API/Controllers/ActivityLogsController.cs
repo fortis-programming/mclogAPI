@@ -22,20 +22,22 @@ namespace mclog_API.Controllers
             _context = context;
         }
 
-        // WILL REMOVE THIS ONE AFTER DEVELOPMENT
+        // GET: api/ActivityLogs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<ActivityLogsModel>>> GetactivityLogs()
         {
-            return await _context.activityLogs.ToListAsync(); ;
+            //string query = "SELECT * FROM ActivityLogs";
+            //return await _context.activityLogs.FromSqlRaw(query).ToListAsync();
+            return await _context.activityLogs.ToListAsync();
         }
 
-        // GET: api/ActivityLogs/1
+        // GET: api/ActivityLogs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<ActivityLogs>>> GetLogs(string id)
+        public async Task<ActionResult<IEnumerable<ActivityLogsModel>>> GetActivityLogs(int id)
         {
             var allData = await _context.activityLogs.ToListAsync();
-            var filteredLogs = new List<ActivityLogs>();
-            
+            var filteredLogs = new List<ActivityLogsModel>();
+
             allData.ForEach(d =>
             {
                 if (d.UserId == id)
@@ -46,25 +48,10 @@ namespace mclog_API.Controllers
             return filteredLogs;
         }
 
-        // GET: api/ActivityLogs/5
-        /*
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ActivityLogs>> GetActivityLogs(int id)
-        {
-            var activityLogs = await _context.activityLogs.FindAsync(id);
-
-            if (activityLogs == null)
-            {
-                return NotFound();
-            }
-
-            return activityLogs;
-        }*/
-
         // PUT: api/ActivityLogs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActivityLogs(int id, ActivityLogs activityLogs)
+        public async Task<IActionResult> PutActivityLogs(int id, ActivityLogsModel activityLogs)
         {
             if (id != activityLogs.Id)
             {
@@ -94,13 +81,13 @@ namespace mclog_API.Controllers
 
         // POST: api/ActivityLogs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("{id}")]
-        public async Task<ActionResult<ActivityLogs>> PostActivityLogs(int id, ActivityLogs activityLogs)
+        [HttpPost]
+        public async Task<ActionResult<ActivityLogsModel>> PostActivityLogs(ActivityLogsModel activityLogs)
         {
             _context.activityLogs.Add(activityLogs);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetActivityLogs", new { id = activityLogs }, activityLogs);
+            return CreatedAtAction("GetActivityLogs", new { id = activityLogs.Id }, activityLogs);
         }
 
         // DELETE: api/ActivityLogs/5

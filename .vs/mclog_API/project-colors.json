@@ -5,7 +5,12 @@
       "ProjectGuid": "93ad7dbd-e5f5-4348-866a-d8a3d2953add",
       "DisplayName": "mclog_API",
       "ColorIndex": 0
+    },
+    "28806f9e-b222-49e9-bd5c-7e9780b10257": {
+      "ProjectGuid": "28806f9e-b222-49e9-bd5c-7e9780b10257",
+      "DisplayName": "mclogData.Data",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

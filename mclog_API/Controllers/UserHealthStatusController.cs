@@ -24,32 +24,29 @@ namespace mclog_API.Controllers
 
         // GET: api/UserHealthStatus
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserHealthStatus>>> GetuserHealthStatuses()
+        public async Task<ActionResult<IEnumerable<UserHealthStatusModel>>> GetuserHealthStatus()
         {
             return await _context.userHealthStatus.ToListAsync();
         }
 
         // GET: api/UserHealthStatus/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<UserHealthStatus>>> GetUserHealthStatus(int id)
+        public async Task<ActionResult<UserHealthStatusModel>> GetUserHealthStatus(int id)
         {
-            var allData = await _context.userHealthStatus.ToListAsync();
-            var filteredLogs = new List<UserHealthStatus>();
+            var userHealthStatus = await _context.userHealthStatus.FindAsync(id);
 
-            allData.ForEach(d =>
+            if (userHealthStatus == null)
             {
-                if (d.UserId == id.ToString())
-                {
-                    filteredLogs.Add(d);
-                }
-            });
-            return filteredLogs;
+                return NotFound();
+            }
+
+            return userHealthStatus;
         }
 
         // PUT: api/UserHealthStatus/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserHealthStatus(int id, UserHealthStatus userHealthStatus)
+        public async Task<IActionResult> PutUserHealthStatus(int id, UserHealthStatusModel userHealthStatus)
         {
             if (id != userHealthStatus.Id)
             {
@@ -80,7 +77,7 @@ namespace mclog_API.Controllers
         // POST: api/UserHealthStatus
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserHealthStatus>> PostUserHealthStatus(UserHealthStatus userHealthStatus)
+        public async Task<ActionResult<UserHealthStatusModel>> PostUserHealthStatus(UserHealthStatusModel userHealthStatus)
         {
             _context.userHealthStatus.Add(userHealthStatus);
             await _context.SaveChangesAsync();

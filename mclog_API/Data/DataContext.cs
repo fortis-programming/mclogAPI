@@ -6,11 +6,11 @@ namespace mclog_API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
        
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
 
-        public DbSet<ActivityLogs> activityLogs { get; set; }
+        public DbSet<ActivityLogsModel> activityLogs { get; set; }
 
-        public DbSet<UserHealthStatus> userHealthStatus { get; set; }
+        public DbSet<UserHealthStatusModel> userHealthStatus { get; set; }
 
         public DbSet<AuthenticationModel> authenticationModel { get; set; }
     }

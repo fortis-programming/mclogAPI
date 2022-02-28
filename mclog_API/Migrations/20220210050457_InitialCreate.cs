@@ -37,12 +37,8 @@ namespace mclog_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SymptomOne = table.Column<string>(type: "nvarchar(200)", maxLength: 255, nullable: false),
-                    SymptomTwo = table.Column<string>(type: "nvarchar(200)", maxLength: 255, nullable: false),
-                    SymptomThree = table.Column<string>(type: "nvarchar(200)", maxLength: 255, nullable: false),
-                    SymptomFour = table.Column<string>(type: "nvarchar(200)", maxLength: 255, nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(200)", maxLength: 255, nullable: false)
+                    DateTime = table.Column<DateTime>(type: "datetime", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,16 +51,46 @@ namespace mclog_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TimeIn = table.Column<DateTime>(type: "datetime", nullable: false),
-                    TImeOut = table.Column<DateTime>(type: "datetime", nullable: false),
-                    BuildingName = table.Column<string>(type: "nvarchar(255)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(255)", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ActivityDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ActivityLogs", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+               name: "Symptoms",
+               columns: table => new
+               {
+                   Id = table.Column<int>(type: "int", nullable: false)
+                       .Annotation("SqlServer:Identity", "1, 1"),
+                   SymptomName = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                   UserId = table.Column<int>(type: "int", nullable: false),
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_Symptoms", x => x.Id);
+               });
+
+            migrationBuilder.CreateTable(
+              name: "Buildings",
+              columns: table => new
+              {
+                  Id = table.Column<int>(type: "int", nullable: false)
+                      .Annotation("SqlServer:Identity", "1, 1"),
+                  BuildingName = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                  Address = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                  ActivityLogId = table.Column<int>(type: "int", nullable: false),
+                  TimeIn = table.Column<DateTime>(type: "datetime", nullable: true),
+                  TimeOut = table.Column<DateTime>(type: "datetime", nullable: true)
+              },
+              constraints: table =>
+              {
+                  table.PrimaryKey("PK_Buildings", x => x.Id);
+              });
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -73,6 +99,12 @@ namespace mclog_API.Migrations
                 name: "Users");
             migrationBuilder.DropTable(
                 name: "ActivityLogs");
+            migrationBuilder.DropTable(
+                name: "UserHealthStatus");
+            migrationBuilder.DropTable(
+                name: "Symptoms");
+            migrationBuilder.DropTable(
+                name: "Buildings");
         }
     }
 }
