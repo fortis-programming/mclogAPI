@@ -35,17 +35,17 @@ namespace mclog_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<ActivityLogsModel>>> GetActivityLogs(int id)
         {
-            var allData = await _context.activityLogs.ToListAsync();
-            var filteredLogs = new List<ActivityLogsModel>();
+                var allData = await _context.activityLogs.ToListAsync();
+                var filteredLogs = new List<ActivityLogsModel>();
 
-            allData.ForEach(d =>
-            {
-                if (d.UserId == id)
+                allData.ForEach(d =>
                 {
-                    filteredLogs.Add(d);
-                }
-            });
-            return filteredLogs;
+                    if (d.UserId == id)
+                    {
+                        filteredLogs.Add(d);
+                    }
+                });
+                return filteredLogs;
         }
 
         // PUT: api/ActivityLogs/5
