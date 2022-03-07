@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: myAllowSpecificOrigins,
         builder =>
         {
-            builder.WithOrigins("https://mclog-dashboard.web.app")
+            builder.WithOrigins("https://mclog-dashboard.web.app", "http://localhost:4200")
             .AllowAnyMethod()
             .AllowAnyHeader();
         });

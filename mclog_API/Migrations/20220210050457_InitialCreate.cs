@@ -8,6 +8,8 @@ namespace mclog_API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql(@"CREATE OR ALTER PROCEDURE [dbo].[sp_GetUserStatus] AS SET NOCOUNT ON; SELECT ActivityLogs.Id, Users.Gender, Symptoms.SymptomName, ActivityLogs.Status, ActivityLogs.ActivityDate, Buildings.BuildingName, Buildings.Address FROM ActivityLogs INNER JOIN BuildingLogs ON BuildingLogs.ActivityLogId = ActivityLogs.Id INNER JOIN Buildings ON BuildingLogs.BuildingId = Buildings.id INNER JOIN Users ON Users.Id = ActivityLogs.UserId INNER JOIN UserHealthStatus ON UserHealthStatus.UserId = Users.Id INNER JOIN Symptoms ON UserHealthStatus.Id = Symptoms.UserId");
+    
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -75,6 +77,22 @@ namespace mclog_API.Migrations
                });
 
             migrationBuilder.CreateTable(
+              name: "BuildingLogs",
+              columns: table => new
+              {
+                  Id = table.Column<int>(type: "int", nullable: false)
+                      .Annotation("SqlServer:Identity", "1, 1"),
+                  ActivityLogId = table.Column<int>(type: "int", nullable: false),
+                  BuildingId = table.Column<int>(type: "int", nullable: false),
+                  TimeIn = table.Column<DateTime>(type: "datetime", nullable: true),
+                  TimeOut = table.Column<DateTime>(type: "datetime", nullable: true)
+              },
+              constraints: table =>
+              {
+                  table.PrimaryKey("PK_BuildingLogs", x => x.Id);
+              });
+
+            migrationBuilder.CreateTable(
               name: "Buildings",
               columns: table => new
               {
@@ -82,15 +100,11 @@ namespace mclog_API.Migrations
                       .Annotation("SqlServer:Identity", "1, 1"),
                   BuildingName = table.Column<string>(type: "nvarchar(255)", nullable: false),
                   Address = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                  ActivityLogId = table.Column<int>(type: "int", nullable: false),
-                  TimeIn = table.Column<DateTime>(type: "datetime", nullable: true),
-                  TimeOut = table.Column<DateTime>(type: "datetime", nullable: true)
               },
               constraints: table =>
               {
                   table.PrimaryKey("PK_Buildings", x => x.Id);
               });
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -105,6 +119,8 @@ namespace mclog_API.Migrations
                 name: "Symptoms");
             migrationBuilder.DropTable(
                 name: "Buildings");
+            migrationBuilder.DropTable(
+                name: "BuildingLogs");
         }
     }
 }
