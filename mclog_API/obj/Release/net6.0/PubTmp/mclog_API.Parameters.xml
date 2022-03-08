@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="mclogAPI20220219222916" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="mclogAPI20220308122258" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\TARTS\\Desktop\\mclog_API\\mclog_API\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
   <parameter name="mclog_API.Data.DataContext" description="" value="Data Source=tcp:mclog-apidbserver.database.windows.net,1433;Initial Catalog=mclog_API_db;User Id=tarts@mclog-apidbserver;Password=Fortis.Programming" tags="dbfullsql">

@@ -8,53 +8,52 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mclog_API.Data;
 using mclog_API.Models;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace mclog_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class SymptomsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public UsersController(DataContext context)
+        public SymptomsController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Symptoms
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<SymptomsModel>>> GetSymptomsModel()
         {
-            return await _context.users.ToListAsync(); ; 
+            return await _context.symptoms.ToListAsync();
         }
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUser(int id)
-        {
-            var user = await _context.users.FindAsync(id);
 
-            if (user == null)
+        // GET: api/Symptoms/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<SymptomsModel>> GetSymptomsModel(int id)
+        {
+            var symptomsModel = await _context.symptoms.FindAsync(id);
+
+            if (symptomsModel == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return symptomsModel;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Symptoms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, UserModel user)
+        public async Task<IActionResult> PutSymptomsModel(int id, SymptomsModel symptomsModel)
         {
-            if (id != user.Id)
+            if (id != symptomsModel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(symptomsModel).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +61,7 @@ namespace mclog_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!SymptomsModelExists(id))
                 {
                     return NotFound();
                 }
@@ -75,41 +74,36 @@ namespace mclog_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Symptoms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUser(UserModel user)
+        public async Task<ActionResult<SymptomsModel>> PostSymptomsModel(SymptomsModel symptomsModel)
         {
-            _context.users.Add(user);
+            _context.symptoms.Add(symptomsModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetSymptomsModel", new { id = symptomsModel.Id }, symptomsModel);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Symptoms/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteSymptomsModel(int id)
         {
-            var user = await _context.users.FindAsync(id);
-            if (user == null)
+            var symptomsModel = await _context.symptoms.FindAsync(id);
+            if (symptomsModel == null)
             {
                 return NotFound();
             }
 
-            _context.users.Remove(user);
+            _context.symptoms.Remove(symptomsModel);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CheckIfMobileIsRegistered(string MobileNumber)
+        private bool SymptomsModelExists(int id)
         {
-            return _context.users.Any(e => e.PhoneNumber == MobileNumber);
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.users.Any(e => e.Id == id);
+            return _context.symptoms.Any(e => e.Id == id);
         }
     }
 }

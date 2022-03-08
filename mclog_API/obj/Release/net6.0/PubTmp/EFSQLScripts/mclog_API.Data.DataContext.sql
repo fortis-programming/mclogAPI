@@ -35,12 +35,8 @@ IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'2022
 BEGIN
     CREATE TABLE [UserHealthStatus] (
         [Id] int NOT NULL IDENTITY,
-        [SymptomOne] nvarchar(200) NOT NULL,
-        [SymptomTwo] nvarchar(200) NOT NULL,
-        [SymptomThree] nvarchar(200) NOT NULL,
-        [SymptomFour] nvarchar(200) NOT NULL,
-        [Date] datetime NOT NULL,
-        [UserId] nvarchar(200) NOT NULL,
+        [DateTime] datetime NOT NULL,
+        [UserId] int NOT NULL,
         CONSTRAINT [PK_UserHealthStatus] PRIMARY KEY ([Id])
     );
 END;
@@ -50,12 +46,45 @@ IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'2022
 BEGIN
     CREATE TABLE [ActivityLogs] (
         [Id] int NOT NULL IDENTITY,
-        [TimeIn] datetime NOT NULL,
-        [TImeOut] datetime NOT NULL,
-        [BuildingName] nvarchar(255) NOT NULL,
         [Status] nvarchar(255) NOT NULL,
-        [UserId] nvarchar(255) NOT NULL,
+        [UserId] int NOT NULL,
+        [ActivityDate] datetime NOT NULL,
         CONSTRAINT [PK_ActivityLogs] PRIMARY KEY ([Id])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220210050457_InitialCreate')
+BEGIN
+    CREATE TABLE [Symptoms] (
+        [Id] int NOT NULL IDENTITY,
+        [SymptomName] nvarchar(255) NOT NULL,
+        [UserHealthStatusId] int NOT NULL,
+        CONSTRAINT [PK_Symptoms] PRIMARY KEY ([Id])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220210050457_InitialCreate')
+BEGIN
+    CREATE TABLE [BuildingLogs] (
+        [Id] int NOT NULL IDENTITY,
+        [ActivityLogId] int NOT NULL,
+        [BuildingId] int NOT NULL,
+        [TimeIn] datetime NULL,
+        [TimeOut] datetime NULL,
+        CONSTRAINT [PK_BuildingLogs] PRIMARY KEY ([Id])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220210050457_InitialCreate')
+BEGIN
+    CREATE TABLE [Buildings] (
+        [Id] int NOT NULL IDENTITY,
+        [BuildingName] nvarchar(255) NOT NULL,
+        [Address] nvarchar(255) NOT NULL,
+        CONSTRAINT [PK_Buildings] PRIMARY KEY ([Id])
     );
 END;
 GO

@@ -24,7 +24,12 @@ namespace mclog_API.Controllers
         [HttpGet]
         public List<GetUserLogs> GetgetUserLogs()
         {  
-            return _context.getUserLogs.FromSqlRaw("EXEC sp_GetUserStatus").ToList();
+            return _context.getUserLogs.FromSqlRaw(@"SELECT ActivityLogs.Id, Users.Gender, Symptoms.SymptomName, ActivityLogs.Status, ActivityLogs.ActivityDate, Buildings.BuildingName, Buildings.Address FROM ActivityLogs 
+            INNER JOIN BuildingLogs ON BuildingLogs.ActivityLogId = ActivityLogs.Id 
+            INNER JOIN Buildings ON BuildingLogs.BuildingId = Buildings.id 
+            INNER JOIN Users ON Users.Id = ActivityLogs.UserId 
+            INNER JOIN UserHealthStatus ON UserHealthStatus.UserId = Users.Id 
+            INNER JOIN Symptoms ON UserHealthStatus.Id = Symptoms.UserHealthStatusId").ToList();
         }   
 
         /*
