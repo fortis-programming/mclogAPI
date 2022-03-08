@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAz4/GwTwuakuSunBxlJkqawAAAAACAAAAAAAQZgAAAAEAACAAAAAjS9fuhwGEo9poy4Pi5I+PF31otSTJLMdW4UV4D0UJ2QAAAAAOgAAAAAIAACAAAADjKrnczweevyCnQSnDYn0aBPO2BoWZTS2IP6hRezHdcYAAAAAn51dUWY/0hyL3MUuV1Z1b6FlytFoHv3X2FnlOzVSFejlcJVh5tCXq+yRld0OI2HlB/zKvCcnemXrXj7l7ePdk5B947V4wwqtBcUo4BSk6ECQhgEEd5ymw6HVxAsMHkT7k8BVUsf3a71U6xx3tG/IsXdtQcp76EMKb7OqXqKrPIkAAAABynCRzrtQ9MXavlwBamNbhcVbFzmhBdaeT50A2kmRiCLipCe0bqvUDadP/mTrdsxSYNhVxCuNK5fo8Am0qMD0/</EncryptedPassword>
-    <History>True|2022-02-27T08:27:51.1681826Z;True|2022-02-25T23:10:29.0602186+08:00;True|2022-02-22T10:09:20.5048851+08:00;True|2022-02-22T09:30:58.6658083+08:00;True|2022-02-22T08:26:44.4863008+08:00;True|2022-02-21T21:34:58.2847975+08:00;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAz4/GwTwuakuSunBxlJkqawAAAAACAAAAAAAQZgAAAAEAACAAAAAL5W9NFW57njub6mfswQ83RdLTsWs4BppvcM7xZMYJ4QAAAAAOgAAAAAIAACAAAAC/nur0hTbQ5YgbKjymGaZ6AKsfVcttRvkijm7PK7mX44AAAACZjifXU/ovEOtH3s2+FADfEMw/cWPESFk4Z2cBjezTxxNt/meuewKSYl2KdMYQgS7S8xujpAdHla1DO3szz+XkGRtfpj1DYTX1wlk0E8khtQPT+ig4eywle6VZBACy4apJl+3qpjLGbU2W041eMl/TMEyG9kJcw3hf4m81C+nfuUAAAACOkNnWM1Eah+ST9kvVe4CFIUgUl42l74PWo2sZDwydAHSjm6iIsmC1GjxTRkp5XGhRDl3lnX0PuKmdK7wq1oc8</EncryptedPassword>
+    <History>True|2022-03-08T18:53:28.5618574Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <EFMigrations Include="mclog_API.Data.DataContext">

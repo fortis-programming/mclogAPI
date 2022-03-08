@@ -6,7 +6,7 @@ namespace mclog_API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
        
-        public DbSet<UserModel> Users { get; set; }
+        public DbSet<UserModel> users { get; set; }
 
         public DbSet<ActivityLogsModel> activityLogs { get; set; }
 
@@ -15,5 +15,11 @@ namespace mclog_API.Data
         public DbSet<AuthenticationModel> authenticationModel { get; set; }
 
         public DbSet<GetUserLogs> getUserLogs { get; set; }
+
+        public DbSet<mclog_API.Models.SymptomsModel> symptoms { get; set; }
+
+        public DbSet<mclog_API.Models.BuildingsModel> buildings { get; set; }
+
+        public DbSet<mclog_API.Models.BuildingLogsModel> buildingLogs { get; set; }
     }
 }

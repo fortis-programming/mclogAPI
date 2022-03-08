@@ -8,53 +8,52 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mclog_API.Data;
 using mclog_API.Models;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace mclog_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class BuildingsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public UsersController(DataContext context)
+        public BuildingsController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Buildings
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<BuildingsModel>>> GetBuildingsModel()
         {
-            return await _context.users.ToListAsync(); ; 
+            return await _context.buildings.ToListAsync();
         }
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUser(int id)
-        {
-            var user = await _context.users.FindAsync(id);
 
-            if (user == null)
+        // GET: api/Buildings/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BuildingsModel>> GetBuildingsModel(int id)
+        {
+            var buildingsModel = await _context.buildings.FindAsync(id);
+
+            if (buildingsModel == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return buildingsModel;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Buildings/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, UserModel user)
+        public async Task<IActionResult> PutBuildingsModel(int id, BuildingsModel buildingsModel)
         {
-            if (id != user.Id)
+            if (id != buildingsModel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(buildingsModel).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +61,7 @@ namespace mclog_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!BuildingsModelExists(id))
                 {
                     return NotFound();
                 }
@@ -75,41 +74,36 @@ namespace mclog_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Buildings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUser(UserModel user)
+        public async Task<ActionResult<BuildingsModel>> PostBuildingsModel(BuildingsModel buildingsModel)
         {
-            _context.users.Add(user);
+            _context.buildings.Add(buildingsModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetBuildingsModel", new { id = buildingsModel.Id }, buildingsModel);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Buildings/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteBuildingsModel(int id)
         {
-            var user = await _context.users.FindAsync(id);
-            if (user == null)
+            var buildingsModel = await _context.buildings.FindAsync(id);
+            if (buildingsModel == null)
             {
                 return NotFound();
             }
 
-            _context.users.Remove(user);
+            _context.buildings.Remove(buildingsModel);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CheckIfMobileIsRegistered(string MobileNumber)
+        private bool BuildingsModelExists(int id)
         {
-            return _context.users.Any(e => e.PhoneNumber == MobileNumber);
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.users.Any(e => e.Id == id);
+            return _context.buildings.Any(e => e.Id == id);
         }
     }
 }

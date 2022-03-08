@@ -125,7 +125,7 @@ namespace mclog_API.Controllers
 
         private async Task<int> GetUserId(AuthenticationModel authenticationModel)
         {
-            var allData = await _context.Users.ToListAsync();
+            var allData = await _context.users.ToListAsync();
             int filteredLogs = 0;
 
             allData.ForEach(d =>

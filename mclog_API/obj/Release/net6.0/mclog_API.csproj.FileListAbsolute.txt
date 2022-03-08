@@ -271,3 +271,13 @@ C:\Users\TARTS\Desktop\mclog_API\mclog_API\obj\Release\net6.0\mclog_API.dll
 C:\Users\TARTS\Desktop\mclog_API\mclog_API\obj\Release\net6.0\ref\mclog_API.dll
 C:\Users\TARTS\Desktop\mclog_API\mclog_API\obj\Release\net6.0\mclog_API.pdb
 C:\Users\TARTS\Desktop\mclog_API\mclog_API\obj\Release\net6.0\mclog_API.genruntimeconfig.cache
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\Dynamitey.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\ImpromptuInterface.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\DurableTask.Core.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.Core.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.Interfaces.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.Linq.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.PlatformServices.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.Providers.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.dll
+C:\Users\TARTS\Desktop\mclog_API\mclog_API\bin\Release\net6.0\System.Reactive.xml
