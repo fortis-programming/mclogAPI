@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAz4/GwTwuakuSunBxlJkqawAAAAACAAAAAAAQZgAAAAEAACAAAAAL5W9NFW57njub6mfswQ83RdLTsWs4BppvcM7xZMYJ4QAAAAAOgAAAAAIAACAAAAC/nur0hTbQ5YgbKjymGaZ6AKsfVcttRvkijm7PK7mX44AAAACZjifXU/ovEOtH3s2+FADfEMw/cWPESFk4Z2cBjezTxxNt/meuewKSYl2KdMYQgS7S8xujpAdHla1DO3szz+XkGRtfpj1DYTX1wlk0E8khtQPT+ig4eywle6VZBACy4apJl+3qpjLGbU2W041eMl/TMEyG9kJcw3hf4m81C+nfuUAAAACOkNnWM1Eah+ST9kvVe4CFIUgUl42l74PWo2sZDwydAHSjm6iIsmC1GjxTRkp5XGhRDl3lnX0PuKmdK7wq1oc8</EncryptedPassword>
-    <History>True|2022-03-08T18:53:28.5618574Z;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAz4/GwTwuakuSunBxlJkqawAAAAACAAAAAAAQZgAAAAEAACAAAAAxude+6RnGNY3QdRysw03zm7nrhPoc1DutzhIUkN+UdwAAAAAOgAAAAAIAACAAAADU0PECFuRiuEOz8iEnXnP/tliwSu8FJX3Aow73qIBJP4AAAADaVcbSvCh61e6GbXiva2y+cEDjhekTLZyAlQ545rT/k8CiOAQKEaCIlG0eIwE40SLq4ZRxDDi9GzsjQXHYbfa5Lfbkizdj1KGgpjkzUNJjXK5VclEEqTVX3FUDEDSSpiwh5TbH/fwOlwP5o9hTRtnm3LgZkswrpZdaiQcOBY4o8kAAAABe12EDKMwdDkjrAICrBmpW6x5oEHxeKe+oMtWw58c9vF4Jg/u27UNb/flhoYHoUpnpItYzSNKlUfiRq2/fDztM</EncryptedPassword>
+    <History>True|2022-03-11T14:38:06.0461062Z;True|2022-03-11T20:25:31.3625314+08:00;True|2022-03-10T06:04:10.6927695+08:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <EFMigrations Include="mclog_API.Data.DataContext">

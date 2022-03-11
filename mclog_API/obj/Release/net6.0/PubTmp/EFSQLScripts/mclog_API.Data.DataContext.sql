@@ -37,6 +37,8 @@ BEGIN
         [Id] int NOT NULL IDENTITY,
         [DateTime] datetime NOT NULL,
         [UserId] int NOT NULL,
+        [Status] nvarchar(255) NOT NULL,
+        [Temperature] int NOT NULL,
         CONSTRAINT [PK_UserHealthStatus] PRIMARY KEY ([Id])
     );
 END;

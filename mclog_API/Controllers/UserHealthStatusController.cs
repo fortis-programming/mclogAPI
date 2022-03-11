@@ -31,16 +31,20 @@ namespace mclog_API.Controllers
 
         // GET: api/UserHealthStatus/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserHealthStatusModel>> GetUserHealthStatus(int id)
+        public async Task<ActionResult<IEnumerable<UserHealthStatusModel>>> GetUserHealthStatus(int id)
         {
-            var userHealthStatus = await _context.userHealthStatus.FindAsync(id);
+            var allData = await _context.userHealthStatus.ToListAsync();
+            var filteredLogs = new List<UserHealthStatusModel>();
 
-            if (userHealthStatus == null)
+            allData.ForEach(d =>
             {
-                return NotFound();
-            }
+                if (d.UserId == id)
+                {
+                    filteredLogs.Add(d);
+                }
+            });
 
-            return userHealthStatus;
+            return filteredLogs;
         }
 
         // PUT: api/UserHealthStatus/5
