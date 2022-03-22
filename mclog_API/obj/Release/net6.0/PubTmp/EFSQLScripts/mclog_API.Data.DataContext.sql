@@ -26,6 +26,7 @@ BEGIN
         [Gender] nvarchar(200) NOT NULL,
         [Password] nvarchar(200) NOT NULL,
         [PhoneNumber] nvarchar(200) NOT NULL,
+        [Age] int NOT NULL,
         CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
     );
 END;
@@ -37,6 +38,7 @@ BEGIN
         [Id] int NOT NULL IDENTITY,
         [DateTime] datetime NOT NULL,
         [UserId] int NOT NULL,
+        [Temperature] float NULL,
         CONSTRAINT [PK_UserHealthStatus] PRIMARY KEY ([Id])
     );
 END;
@@ -46,9 +48,11 @@ IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'2022
 BEGIN
     CREATE TABLE [ActivityLogs] (
         [Id] int NOT NULL IDENTITY,
-        [Status] nvarchar(255) NOT NULL,
         [UserId] int NOT NULL,
         [ActivityDate] datetime NOT NULL,
+        [Status] nvarchar(255) NOT NULL,
+        [HealthStatusId] int NOT NULL,
+        [BuildingId] int NOT NULL,
         CONSTRAINT [PK_ActivityLogs] PRIMARY KEY ([Id])
     );
 END;
@@ -61,19 +65,6 @@ BEGIN
         [SymptomName] nvarchar(255) NOT NULL,
         [UserHealthStatusId] int NOT NULL,
         CONSTRAINT [PK_Symptoms] PRIMARY KEY ([Id])
-    );
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220210050457_InitialCreate')
-BEGIN
-    CREATE TABLE [BuildingLogs] (
-        [Id] int NOT NULL IDENTITY,
-        [ActivityLogId] int NOT NULL,
-        [BuildingId] int NOT NULL,
-        [TimeIn] datetime NULL,
-        [TimeOut] datetime NULL,
-        CONSTRAINT [PK_BuildingLogs] PRIMARY KEY ([Id])
     );
 END;
 GO

@@ -26,7 +26,8 @@ namespace mclog_API.Migrations
                     Baranggay = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    PhoneNumber = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Age = table.Column<int>(type: "int", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +41,8 @@ namespace mclog_API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateTime = table.Column<DateTime>(type: "datetime", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Temperature = table.Column<float>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,9 +55,11 @@ namespace mclog_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Status = table.Column<string>(type: "nvarchar(255)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    ActivityDate = table.Column<DateTime>(type: "datetime", nullable: false)
+                    ActivityDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                    HealthStatusId = table.Column<int>(type: "int", nullable: false),
+                    BuildingId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,28 +73,13 @@ namespace mclog_API.Migrations
                    Id = table.Column<int>(type: "int", nullable: false)
                        .Annotation("SqlServer:Identity", "1, 1"),
                    SymptomName = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                   UserHealthStatusId = table.Column<int>(type: "int", nullable: false),
+                   UserHealthStatusId = table.Column<int>(type: "int", nullable: false)
                },
                constraints: table =>
                {
                    table.PrimaryKey("PK_Symptoms", x => x.Id);
                });
 
-            migrationBuilder.CreateTable(
-              name: "BuildingLogs",
-              columns: table => new
-              {
-                  Id = table.Column<int>(type: "int", nullable: false)
-                      .Annotation("SqlServer:Identity", "1, 1"),
-                  ActivityLogId = table.Column<int>(type: "int", nullable: false),
-                  BuildingId = table.Column<int>(type: "int", nullable: false),
-                  TimeIn = table.Column<DateTime>(type: "datetime", nullable: true),
-                  TimeOut = table.Column<DateTime>(type: "datetime", nullable: true)
-              },
-              constraints: table =>
-              {
-                  table.PrimaryKey("PK_BuildingLogs", x => x.Id);
-              });
 
             migrationBuilder.CreateTable(
               name: "Buildings",
@@ -119,8 +108,6 @@ namespace mclog_API.Migrations
                 name: "Symptoms");
             migrationBuilder.DropTable(
                 name: "Buildings");
-            migrationBuilder.DropTable(
-                name: "BuildingLogs");
         }
     }
 }

@@ -1,9 +1,4 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mclog_API.Data;
@@ -31,16 +26,39 @@ namespace mclog_API.Controllers
 
         // GET: api/Symptoms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SymptomsModel>> GetSymptomsModel(int id)
+        public async Task<ActionResult<IEnumerable<SymptomsModel>>> GetSymptomsModel(int id)
         {
-            var symptomsModel = await _context.symptoms.FindAsync(id);
+            var allData = await _context.symptoms.ToListAsync();
+            var filteredLogs = new List<SymptomsModel>();
 
-            if (symptomsModel == null)
+            if (!HasRecord(id))
             {
                 return NotFound();
             }
 
-            return symptomsModel;
+            allData.ForEach(d =>
+            {
+                if (d.UserHealthStatusId == id)
+                {
+                    filteredLogs.Add(d);
+                }
+            });
+            return filteredLogs;
+        }
+
+        [HttpGet("check/{id}")]
+        public ActionResult<string> CheckIfUserHasSymptoms(int id)
+        {
+            string message;
+            if (HasRecord(id))
+            {
+                message = "{\"response\":\"" + "Has symptoms" + "\"}";
+            } else
+            {
+                message = "{\"response\":\"" + "Healthy" + "\"}";
+            }
+            
+            return message;
         }
 
         // PUT: api/Symptoms/5
@@ -74,9 +92,9 @@ namespace mclog_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Symptoms
+        // POST: api/Symptoms/1
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("{id}")]
         public async Task<ActionResult<SymptomsModel>> PostSymptomsModel(SymptomsModel symptomsModel)
         {
             _context.symptoms.Add(symptomsModel);
@@ -104,6 +122,11 @@ namespace mclog_API.Controllers
         private bool SymptomsModelExists(int id)
         {
             return _context.symptoms.Any(e => e.Id == id);
+        }
+
+        private bool HasRecord(int id)
+        {
+            return _context.symptoms.Any(e => e.UserHealthStatusId == id);
         }
     }
 }

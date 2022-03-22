@@ -6,11 +6,15 @@ namespace mclog_API.Models
     {
         public int Id { get; set; }
 
-        public string? Status { get; set; }
-
-        [Required]
         public int UserId { get; set; }
 
+        public string? Status { get; set; }
+
         public DateTime ActivityDate { get; set; }
+
+        public int HealthStatusId { get; set; }
+
+        public int BuildingId { get; set; }
+
     }
 }

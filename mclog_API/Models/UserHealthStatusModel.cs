@@ -7,5 +7,8 @@
         public DateTime DateTime { get; set; }
 
         public int UserId { get; set; }
+
+        public double Temperature { get; set; }
+
     }
 }
