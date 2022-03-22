@@ -35,10 +35,15 @@ namespace mclog_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<ActivityLogsModel>>> GetActivityLogs(int id)
         {
-                var allData = await _context.activityLogs.ToListAsync();
-                var filteredLogs = new List<ActivityLogsModel>();
+            var allData = await _context.activityLogs.ToListAsync();
+            var filteredLogs = new List<ActivityLogsModel>();
 
-                allData.ForEach(d =>
+            if (!HasRecord(id))
+            {
+                return NotFound();
+            }
+            
+            allData.ForEach(d =>
                 {
                     if (d.UserId == id)
                     {
@@ -109,6 +114,11 @@ namespace mclog_API.Controllers
         private bool ActivityLogsExists(int id)
         {
             return _context.activityLogs.Any(e => e.Id == id);
+        }
+
+        private bool HasRecord(int id)
+        {
+            return _context.activityLogs.Any(e => e.UserId == id);
         }
     }
 }

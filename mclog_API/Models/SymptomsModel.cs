@@ -7,5 +7,6 @@
         public string? SymptomName { get; set; }
 
         public int UserHealthStatusId { get; set; }
+
     }
 }

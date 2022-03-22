@@ -8,8 +8,6 @@ namespace mclog_API.Models
 
         public string? Gender { get; set; }
 
-        public string? SymptomName { get; set; }
-
         public string? Status { get; set; } 
 
         public DateTime? ActivityDate { get; set; }
@@ -17,5 +15,9 @@ namespace mclog_API.Models
         public string? BuildingName { get; set; }
 
         public string? Address { get; set; }
+
+        public int? Age { get; set; }
+
+        public int? Temperature { get; set; }
     }
 }

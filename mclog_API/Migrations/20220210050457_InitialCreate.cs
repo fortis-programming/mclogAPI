@@ -42,7 +42,7 @@ namespace mclog_API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateTime = table.Column<DateTime>(type: "datetime", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Temperature = table.Column<int>(type: "int", nullable: true)
+                    Temperature = table.Column<float>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace mclog_API.Migrations
                    Id = table.Column<int>(type: "int", nullable: false)
                        .Annotation("SqlServer:Identity", "1, 1"),
                    SymptomName = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                   UserHealthStatusId = table.Column<int>(type: "int", nullable: false),
+                   UserHealthStatusId = table.Column<int>(type: "int", nullable: false)
                },
                constraints: table =>
                {

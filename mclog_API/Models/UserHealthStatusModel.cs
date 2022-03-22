@@ -8,7 +8,7 @@
 
         public int UserId { get; set; }
 
-        public int Temperature { get; set; }
+        public double Temperature { get; set; }
 
     }
 }

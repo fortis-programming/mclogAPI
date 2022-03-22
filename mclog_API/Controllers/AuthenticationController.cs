@@ -28,8 +28,6 @@ namespace mclog_API.Controllers
         public ActionResult<string> GetauthenticationModel(AuthenticationModel authenticationModel)
         {
             string message = "{\"message\":\""+ CheckIfMobileNumberIsRegistered(authenticationModel) + "\"}";
-            //  return JsonConvert.SerializeObject(CheckIfMobileNumberIsRegistered(authenticationModel));
-            //return await _context.authenticationModel.ToListAsync();
             return message;
         }
 
@@ -77,19 +75,6 @@ namespace mclog_API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Authentication
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*
-        [HttpPost]
-        public async Task<ActionResult<AuthenticationModel>> PostAuthenticationModel(AuthenticationModel authenticationModel)
-        {
-            _context.authenticationModel.Add(authenticationModel);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAuthenticationModel", new { id = authenticationModel.Id }, authenticationModel);
-        }
-        */
 
         // DELETE: api/Authentication/5
         [HttpDelete("{id}")]
