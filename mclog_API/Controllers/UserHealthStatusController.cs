@@ -20,24 +20,75 @@ namespace mclog_API.Controllers
         }
 
         // GET: api/UserHealthStatus
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserHealthStatusModel>>> GetuserHealthStatus()
+        public async Task<ActionResult<IEnumerable<UserHealthStatusModel>>> GetSymptomsModel()
         {
             return await _context.userHealthStatus.ToListAsync();
         }
 
-        // GET: api/UserHealthStatus/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserHealthStatusModel>> GetUserHealthStatus(int id)
+        [HttpGet("GetId/{id}")]
+        public async Task<ActionResult<string>> GetuserHealthStatus(int id)
         {
-            var userHealthStatus = await _context.userHealthStatus.FindAsync(id);
+            var allData = await _context.userHealthStatus.ToListAsync();
+            var filteredLogs = new List<UserHealthStatusModel>();
 
-            if (userHealthStatus == null)
+            if (!HasRecord(id))
             {
                 return NotFound();
             }
 
-            return userHealthStatus;
+            allData.ForEach(d =>
+            {
+                if (d.UserId == id)
+                {
+                    filteredLogs.Add(d);
+                }
+            });
+            return "{\"response\":\"" + filteredLogs[0].Id.ToString() + "\"}";
+        }
+        
+        // GET: api/UserHealthStatus/5
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Object>> GetUserHealthStatus(int id)
+        {
+            var allData = await _context.userHealthStatus.ToListAsync();
+            var filteredLogs = new List<UserHealthStatusModel>();
+
+            if (!HasRecord(id))
+            {
+                return NotFound();
+            }
+
+            allData.ForEach(d =>
+            {
+                if (d.UserId == id)
+                {
+                    filteredLogs.Add(d);
+                }
+            });
+            var objectResponse = new
+            {
+                id = filteredLogs[0].Id,
+                temperature = filteredLogs[0].Temperature
+            };
+            return objectResponse;
+        }
+        
+        [HttpGet("check/{id}")]
+        public ActionResult<string> CheckIfUserExist(int id)
+        {
+            string message;
+            
+            if (HasRecord(id))
+            {
+                message = "{\"response\":\"" + "Exists" + "\"}";
+            }
+            else
+            {
+                message = "{\"response\":\"" + "None" + "\"}";
+            }
+
+            return message;
         }
 
         // PUT: api/UserHealthStatus/5
@@ -101,6 +152,11 @@ namespace mclog_API.Controllers
         private bool UserHealthStatusExists(int id)
         {
             return _context.userHealthStatus.Any(e => e.Id == id);
+        }
+
+        private bool HasRecord(int id)
+        {
+            return _context.userHealthStatus.Any(e => e.UserId == id);
         }
     }
 }
