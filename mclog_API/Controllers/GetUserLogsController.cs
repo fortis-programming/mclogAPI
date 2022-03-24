@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mclog_API.Data;
 using mclog_API.Models;
-using Microsoft.Data.SqlClient;
 
 namespace mclog_API.Controllers
 {
@@ -23,13 +22,15 @@ namespace mclog_API.Controllers
         // GET: api/GetUserLogs
         [HttpGet]
         public List<GetUserLogs> GetgetUserLogs()
-        {  
-            return _context.getUserLogs.FromSqlRaw(@"SELECT ActivityLogs.Id, Buildings.BuildingName, Buildings.Address, ActivityLogs.ActivityDate, Users.Age, Users.Gender, ActivityLogs.Status, UserHealthStatus.Temperature
+        {
+            /*
+             @"SELECT ActivityLogs.Id, Buildings.BuildingName, Buildings.Address, ActivityLogs.ActivityDate, Users.Age, Users.Gender, ActivityLogs.Status, UserHealthStatus.Temperature
                 FROM ActivityLogs
                 INNER JOIN Buildings ON Buildings.Id = ActivityLogs.BuildingId
-                INNER JOIN UserHealthStatus ON ActivityLogs.HealthStatusId = UserHealthStatus.Id
-                INNER JOIN Symptoms ON Symptoms.Id = UserHealthStatus.Id
-                INNER JOIN Users ON Users.Id = ActivityLogs.UserId").ToList();
+                INNER JOIN UserHealthStatus ON UserHealthStatus.Id = ActivityLogs.HealthStatusId
+                INNER JOIN Users ON Users.Id = ActivityLogs.UserId"
+             */
+            return _context.getUserLogs.FromSqlRaw(@"SELECT ActivityLogs.Id, ActivityLogs.ActivityDate, ActivityLogs.Status, Buildings.BuildingName, Buildings.Address, Users.Gender, Users.Age FROM ActivityLogs INNER JOIN Buildings ON Buildings.Id = ActivityLogs.BuildingId INNER JOIN Users ON Users.Id = ActivityLogs.UserId").ToList();
         }   
     }
 }

@@ -24,12 +24,47 @@ namespace mclog_API.Controllers
             _context = context;
         }
 
+        //used in adminview
+        [Route("GetAllUsers")]
+        [HttpGet]
+        public async Task<object> GetAllUsers()
+        {
+            object data = null;
+            try
+            {
+                var users = await _context.users.Select(x => new UserModel
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    BirthDate = x.BirthDate,
+                    Province = x.Province,
+                    City = x.City,
+                    Baranggay = x.Baranggay,
+                    Gender = x.Gender,
+                    PhoneNumber = x.PhoneNumber,
+                })
+                .AsNoTracking()
+                .ToListAsync();
+                var healthStatus = await _context.userHealthStatus.AsNoTracking().ToListAsync();
+                var symptoms = await _context.symptoms.AsNoTracking().ToListAsync();
+                data = new { Users = users, HealthStatus = healthStatus, Symptoms = symptoms };
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message;
+            }
+            return data;
+        }
+
         // GET: api/Users
+        /*
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
             return await _context.users.ToListAsync(); ; 
         }
+        */
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetUser(int id)
