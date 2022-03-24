@@ -30,7 +30,8 @@ namespace mclog_API.Controllers
                 INNER JOIN UserHealthStatus ON UserHealthStatus.Id = ActivityLogs.HealthStatusId
                 INNER JOIN Users ON Users.Id = ActivityLogs.UserId"
              */
+            //return _context.getUserLogs.FromSqlRaw(@"SELECT ActivityLogs.Id, ActivityLogs.ActivityDate, ActivityLogs.Status, Buildings.BuildingName, Buildings.Addre, Users.Gender, Users.Province, Users.Region, Users.City, Users.Age FROM ActivityLogs INNER JOIN Buildings ON Buildings.Id = ActivityLogs.BuildingId INNER JOIN Users ON Users.Id = ActivityLogs.UserId").ToList();
             return _context.getUserLogs.FromSqlRaw(@"SELECT ActivityLogs.Id, ActivityLogs.ActivityDate, ActivityLogs.Status, Buildings.BuildingName, Buildings.Address, Users.Gender, Users.Age FROM ActivityLogs INNER JOIN Buildings ON Buildings.Id = ActivityLogs.BuildingId INNER JOIN Users ON Users.Id = ActivityLogs.UserId").ToList();
-        }   
+        }
     }
 }

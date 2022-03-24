@@ -27,8 +27,9 @@ namespace mclog_API.Controllers
         //used in adminview
         [Route("GetAllUsers")]
         [HttpGet]
-        public async Task<object> GetAllUsers()
+        public List<AdminModel> GetAllUsers()
         {
+            /*
             object data = null;
             try
             {
@@ -55,6 +56,8 @@ namespace mclog_API.Controllers
                 string err = ex.Message;
             }
             return data;
+            */
+            return _context.adminModels.FromSqlRaw("SELECT Users.FirstName, Users.MiddleName, Users.Province, Users.Region, Users.City, Users.Baranggay, Users.LastName, Users.Gender, Users.Birthdate, Users.PhoneNumber, UserHealthStatus.Id From Users INNER JOIN UserHealthStatus ON UserHealthStatus.UserId = Users.id").ToList();
         }
 
         // GET: api/Users

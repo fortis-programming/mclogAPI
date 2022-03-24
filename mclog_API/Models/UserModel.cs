@@ -10,7 +10,7 @@
 
         public string? MiddleName { get; set; }
 
-        public int BirthDate { get; set; }
+        public string? BirthDate { get; set; }
 
         public string? Province { get; set; }
 

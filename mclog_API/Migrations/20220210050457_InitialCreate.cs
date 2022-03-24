@@ -19,7 +19,7 @@ namespace mclog_API.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    BirthDate = table.Column<int>(type: "int", nullable: false),
+                    BirthDate = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Province = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Region = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     City = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),

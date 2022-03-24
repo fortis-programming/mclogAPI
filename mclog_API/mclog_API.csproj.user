@@ -11,6 +11,6 @@
     <WebStackScaffolding_DbContextTypeFullName>mclog_API.Data.DataContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\TARTS\Desktop\mclog_API\mclog_API\Properties\PublishProfiles\mclogAPI20220308122258 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\TARTS\Desktop\mclog_API\mclog_API\Properties\PublishProfiles\mclogAPI20220325042627 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

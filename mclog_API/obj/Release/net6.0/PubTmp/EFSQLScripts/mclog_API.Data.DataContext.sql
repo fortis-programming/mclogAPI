@@ -18,7 +18,7 @@ BEGIN
         [FirstName] nvarchar(200) NOT NULL,
         [LastName] nvarchar(200) NOT NULL,
         [MiddleName] nvarchar(200) NOT NULL,
-        [BirthDate] int NOT NULL,
+        [BirthDate] nvarchar(200) NOT NULL,
         [Province] nvarchar(200) NOT NULL,
         [Region] nvarchar(200) NOT NULL,
         [City] nvarchar(200) NOT NULL,

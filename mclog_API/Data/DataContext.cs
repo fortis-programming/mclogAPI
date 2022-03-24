@@ -19,5 +19,7 @@ namespace mclog_API.Data
         public DbSet<mclog_API.Models.SymptomsModel> symptoms { get; set; }
 
         public DbSet<mclog_API.Models.BuildingsModel> buildings { get; set; }
+
+        public DbSet<mclog_API.Models.AdminModel> adminModels { get; set; }
     }
 }
