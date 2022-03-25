@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAz4/GwTwuakuSunBxlJkqawAAAAACAAAAAAAQZgAAAAEAACAAAACBnodgqmlkzrWRNXEI7mvHXaz1+Wj0QEupVFMs64Gf/QAAAAAOgAAAAAIAACAAAACn9PV3b45bLuUe8RpLYt36DlSZBc7KeFk7cU2WjLNSuoAAAAAmPVfBZ2IcqOR6UGyWtyl5AmsZ2vq1M7ZMrMGMN2cV0birbd++ccjXzePZFzvNqmd8vw/c/mQW7qNE9VfXCzhhdyGlqosLzE6xH0HLissZdTssPIL1ogkO8mBLFr9V0k5OwPvHAhkVqpGD5tFWWTJCKUmzXmlL549G0SG6VrdvRUAAAABTfSZljIzTDlWKhAoU2P2GEORYmMh1NnjhBEprT82+3w0UQx3rRZ9etGJ5WZ9wN5wmSso9hpY9vVd0Qc5BZ9RE</EncryptedPassword>
+    <History>True|2022-03-25T02:33:53.6172176Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="mclog_API.Data.DataContext">
+      <Value>Data Source=tcp:mclog-apidbserver.database.windows.net,1433%3bInitial Catalog=mclog_API_db%3bUser Id=tarts%40mclog-apidbserver%3bPassword=721428_Ajn</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "mclogAPI20220308122258",
+      "defaultValue": "mclogAPI20220325102303",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
